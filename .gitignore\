@@ -1,0 +1,58 @@
+# Don't push data
+
+
+# Don't push scripts folder
+scripts/
+misc/
+docs_bu/
+
+# Don't push build folders
+build/
+dist/
+
+#Dont push egg
+*.egg-info
+
+# Don't push shell scripts
+cleanRebuild.sh
+copyToGor.sh
+rebuildDocs.sh
+runTests.sh
+updateZipFile.sh
+
+# Don't push meshfiles
+*.msh
+
+# Don't push some python scripts
+replaceInCode.py
+
+# Don't push any .txt files
+
+
+# Don't push built docs
+# docs/build/
+docs/manual.*
+docs/doxy/
+
+# Don't push deprecated modules
+pyfrp/deprecated/
+
+# Don't push scripts
+pyfrp/scripts/
+
+# Don't push custom meshes
+pyfrp/meshfiles/field/custom/
+pyfrp/meshfiles/experimental/
+
+# Don't push executables
+pyfrp/executables/gmsh
+pyfrp/executables/Fiji.app
+
+# Don't push paper
+paper/
+
+# Don't push temp
+pyfrp/temp/
+
+# Don't push compiled python modules
+*.pyc

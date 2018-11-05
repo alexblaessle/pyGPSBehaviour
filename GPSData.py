@@ -700,7 +700,6 @@ class GPSDataset:
 		"""
 		
 		for ID in self.IDs:
-			
 			self.data[ID].centerCartesian(c)
 	
 	def getColors(self,cpick='jet'):
@@ -881,7 +880,7 @@ class GPSDataset:
 	
 	def showStats(self,axes=[],bins=100):
 		
-		"""Creates four histograms showing overall movement stats of dataset of all delta.
+		"""Creates four histograms showing overall movement stats of all dataset.
 	
 		.. note:: Creates new figure if axes is not specified.
 		
@@ -905,3 +904,80 @@ class GPSDataset:
 		return axes
 	
 	
+		
+	def plotLonLatTraj(self,ax=None,onMap=True,lw=2):
+	
+		"""Plots trajectory in lon/lat for all datasets.
+		
+		.. note:: Creates new figure if axes is not specified.
+		
+		Keyword Args:
+			ax (matplotlib.axes): Axes or basemap to plot in.
+			onMap (bool): Plot on map.
+			lw (str): Linewidth of plot.
+			
+		Returns:
+			matplotlib.axes: Modified axes.
+			
+		"""	
+		
+		
+		
+		for ID in self.IDs:
+			ax=self.data[ID].plotLonLatTraj(ax=ax,onMap=onMap,lw=lw)
+                
+                return ax
+	
+	def plotCartTraj(self,ax=None,showVel=True,centered=True,showCenter=True):
+		
+		"""Plots cartesian trajectory for all datasets.
+		
+		.. note:: Creates new figure if axes is not specified.
+	
+		Args:
+			x (numpy.ndarray): Array with x-coordinates.
+			y (numpy.ndarray): Array with y-coordinates.
+			
+		Keyword Args:
+			ax (matplotlib.axes): Axes to plot in.
+			showVel (bool): Show velocities.
+			centered (bool): Show centered coordinates.
+			showCenter (bool): Display center.
+		
+		Returns:
+			matplotlib.axes: Modified axes.
+		
+		"""
+        
+		for ID in self.IDs:
+			ax=self.data[ID].plotCartTraj(ax=ax,showVel=showVel,centered=centered,showCenter=showCenter)
+		
+		return ax
+	
+	def showData(self,axes=[],lw=2,onMap=True,bins=100,showVel=False,centered=True,showCenter=False):
+		
+		"""Shows basic stats histograms and movement trajectories of all data sets.
+	
+		.. note:: Creates new figure if axes is not specified.
+		
+		Keyword Args:
+			ax (matplotlib.axes): Axes.
+			bins (int): Number of bins.
+		
+		Returns:
+			list: List of modified axes.
+		"""
+		
+		# Create axes if not specified
+		if len(axes)!=6:
+			fig,axes=pm.makeSubplot([3,2])
+		
+		
+		if onMap:
+			ax=pm.drawMap(axes[0])
+		self.plotLonLatTraj(ax=ax,onMap=onMap,lw=lw)
+		self.plotCartTraj(ax=axes[1],showVel=showVel,centered=centered,showCenter=showCenter)
+		self.showStats(axes=axes[2:])
+		
+		
+		return axes

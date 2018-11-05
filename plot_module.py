@@ -276,7 +276,7 @@ def getColors(n,cpick='jet'):
 	
 	return colors
 
-def plotLonLatTraj(lon,lat,ax=None,lw=2,color='k'):
+def plotLonLatTraj(lon,lat,ax=None,onMap=True,lw=2,color='k'):
 	
 	"""Plots trajectory in lon/lat.
         
@@ -302,14 +302,15 @@ def plotLonLatTraj(lon,lat,ax=None,lw=2,color='k'):
 		fig,axes=makeSubplot([1,1])
 		ax=axes[0]
         
+       
+        
         # Plot
 	if onMap: 
 		ax.plot(lon,lat,latlon=True,lw=lw,color=color)
+		plt.draw()
 	else: 
 		ax.plot(lon,lat,lw=lw,color=color)
-	
-	# Redraw
-	ax.get_figure().canvas.draw()
+		ax.get_figure().canvas.draw()
 	
 	return ax
 

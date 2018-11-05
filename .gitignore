@@ -1,0 +1,18 @@
+# Don't push data
+
+
+# Don't push scripts folder
+scripts/
+
+# Don't push build folders
+build/
+dist/
+
+#Dont push egg
+*.egg-info
+
+# Don't push shell scripts
+*sh
+	
+# Don't push compiled python modules
+*.pyc

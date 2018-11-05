@@ -1,8 +1,6 @@
 """Basic module for grey seal project."""
 
 # Import module
-
-from GPSData import GPSData
 import numpy as np
 
 def removeQuotationMarksFromArr(arr):
